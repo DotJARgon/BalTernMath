@@ -38,10 +38,10 @@ public class BTNum {
       
       //rollover
       if(num > MAX) {
-        this.num = MIN + (num%MAX);
+        this.num = MIN + ((num%MAX)-1);
       }
       else if(num < MIN) {
-        this.num = -(abs(num) -(abs(num)%MAX));
+        this.num = MAX + ((num%MAX)+1);
       }
       else {
         this.num = num;
@@ -158,7 +158,7 @@ public class BTNum {
       return numOut;  
     }
     
-    private static byte[] decToBal(long num, int tritNum) {
+    public static byte[] decToBal(long num, int tritNum) {
       
       long n = num;
       byte[] out = new byte[tritNum];
@@ -175,7 +175,7 @@ public class BTNum {
         
         //0 is already what the bytes are, so it is ignored
         
-        n = (n + 1) / 3; //automatically floored
+        n = (n + ((n < 0) ? -1 : 1)) / 3; //automatically floored
         
         i++;  
       }
