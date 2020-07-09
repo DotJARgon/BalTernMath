@@ -9,9 +9,6 @@ import java.util.Arrays;
 public class TestTern {
 
   public static void main(String[] args) {
-   System.out.println(Arrays.toString(BTNum.decToBal(7, 6)));
-   
-   System.out.println(Arrays.toString(BTNum.decToBal(-7, 6)));
-   System.out.println(new Triad(-14));
+   System.out.println(new Tryte(-1).add(new Triad(-13)));
   }
 }

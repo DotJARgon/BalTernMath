@@ -49,6 +49,22 @@ public class BTNum {
     
       this.calcNum = true;
     }
+    public BTNum(long num, int tritN) {
+      tritNum = tritN;
+      setup();
+      //rollover
+      if(num > MAX) {
+        this.num = MIN + ((num%MAX)-1);
+      }
+      else if(num < MIN) {
+        this.num = MAX + ((num%MAX)+1);
+      }
+      else {
+        this.num = num;
+      }
+    
+      this.calcNum = true;
+    }
     public BTNum(String balT) {
       setup();
       //prepare the array
@@ -102,28 +118,28 @@ public class BTNum {
     }
     
     public BTNum add(BTNum bt) {
-      return new BTNum(getNum() + bt.getNum());
+      return new BTNum(getNum() + bt.getNum(), tritNum);
     }
     public BTNum sub(BTNum bt) {
-      return new BTNum(getNum() - bt.getNum()); 
+      return new BTNum(getNum() - bt.getNum(), tritNum); 
     }
     public BTNum mul(BTNum bt) {
-      return new BTNum(getNum() * bt.getNum());
+      return new BTNum(getNum() * bt.getNum(), tritNum);
     }
     public BTNum div(BTNum bt) {
-      return new BTNum(getNum() / bt.getNum());
+      return new BTNum(getNum() / bt.getNum(), tritNum);
     }
     public BTNum mod(BTNum bt) {
-      return new BTNum(mod(getNum(), bt.getNum()));
+      return new BTNum(mod(getNum(), bt.getNum()), tritNum);
     }
     public BTNum rem(BTNum bt) {
-      return new BTNum(getNum() % bt.getNum());
+      return new BTNum(getNum() % bt.getNum(), tritNum);
     }
     public BTNum abs() {
-      return new BTNum(abs(getNum()));
+      return new BTNum(abs(getNum()), tritNum);
     }
     public BTNum nabs() {
-      return new BTNum(-abs(getNum()));
+      return new BTNum(-abs(getNum()), tritNum);
     }
     
     @Override
