@@ -1,0 +1,10 @@
+[I] = Incomplete
+[C] = Complete
+
+[C] 0. Overhaul basic integer based math and make system as modular and fast as currently possible
+[I] 1. Add in support for using "vanilla" numbers, for example, instead of only using tritNum.add(tritNum), you can substitute the second argument with a number, it will improve speed and memory allocation
+[I] 2. Add the ability to pull out quadtrytes, ditrytes, trytes, and triads from given tritNum
+[I] 3. Finish Kleene logic gates
+[I] 3. Add basic float support
+[I] 4. Add variable length floats along with all math operations used on floats(like trig operations)
+[I] 5. Complete math engine and go on to making gen 3 sbtcvm :3
