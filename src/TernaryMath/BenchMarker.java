@@ -16,6 +16,8 @@ public class BenchMarker {
 		
 		long t1 = System.currentTimeMillis();
 		
+		System.out.println((t1 - t0) + " ms");
+		
 		double seconds = (t1-t0)/1000.0;
 		
 		double hz = 1000000000.0/seconds;

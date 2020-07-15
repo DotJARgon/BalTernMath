@@ -1,7 +1,5 @@
 package TernaryMath;
 
-import java.util.Arrays;
-
 public class TritNumber {
 	public static final long powOf3[] = new long[39]; //Pretty much the max value that long can hold using powers of 3
 	public static final long balVal[] = new long[39]; //this is specifically for the values of min and max of tritlength
@@ -207,6 +205,57 @@ public class TritNumber {
 		}
 		
 		return out;
+	}
+	
+	
+	public TritNumber getTriad(int t) {
+		if(t*3 < tritNum) {
+			if(trits == null) {
+				buildTrits();
+			}
+			
+			return new TritNumber(3, new byte[] {trits[t], trits[t+1], trits[t+2]});
+		}
+		return null; //there is no way to get this triad
+	}
+	
+	public TritNumber getTryte(int t) {
+		if(t*6 < tritNum) {
+			if(trits == null) {
+				buildTrits();
+			}
+			
+			return new TritNumber(6, new byte[] {trits[t], trits[t+1], trits[t+2], trits[t+3], trits[t+4], trits[t+5]});
+		}
+		return null; //there is no way to get this tryte
+	}
+	public TritNumber getDiTryte(int t) {
+		if(t*12 < tritNum) {
+			if(trits == null) {
+				buildTrits();
+			}
+			
+			return new TritNumber(12, new byte[] {
+					trits[t], trits[t+1], trits[t+2], trits[t+3], trits[t+4], trits[t+5],
+					trits[t+6], trits[t+7], trits[t+8], trits[t+9], trits[t+10], trits[t+11]
+			});
+		}
+		return null; //there is no way to get this ditryte
+	}
+	
+	public TritNumber castTo(int newTritNumber) {
+		return new TritNumber(newTritNumber, n);
+	}
+	public TritNumber joinWith(TritNumber arg) {
+		byte[] out = new byte[this.tritNum + arg.tritNum];
+		for(int i = 0; i < this.tritNum; i++) {
+			out[i] = this.trits[i];
+		}
+		for(int i = 0; i < arg.tritNum; i++) {
+			out[i + this.tritNum] = arg.trits[i];
+		}
+		
+		return new TritNumber(out.length, out);
 	}
 	
 	public String dataType() {
